@@ -1,0 +1,79 @@
+.pagination span{
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--secondary-color);
+    color: var(--heading-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.active__page{
+    background: var(--secondary-color);
+    color: #fff !important;
+}
+/* General Card Container Styling */
+.tour-card-container {
+    flex: 1 0 21%; /* Default: Cards take about 21% of the container */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Pagination Styling */
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .pagination span {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+  }
+  
+  .pagination span:hover {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .pagination .active__page {
+    background-color: #3498db;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Media Queries for responsive behavior */
+  @media (max-width: 1200px) {
+    .tour-card-container {
+      flex: 1 0 30%; /* Cards take 30% of the container width */
+      max-width: 32%; /* Ensure cards are responsive */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .tour-card-container {
+      flex: 1 0 25%; /* Cards take up 25% of the container width */
+      max-width: 25%; /* Ensures cards are 25% at this breakpoint */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tour-card-container {
+      flex: 1 0 100%; /* Cards take full width on smaller screens */
+      max-width: 100%; /* Make each card full width */
+    }
+  }
+  
+  

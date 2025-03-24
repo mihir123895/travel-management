@@ -1,0 +1,102 @@
+/* Sidebar container */
+.main {
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid #e0e0e0;
+    height: 100vh;
+    width: 200px; /* Slightly wider for better readability */
+    background-color: #f4f4f9; /* Light background color */
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    padding-top: 20px;
+    position: fixed;
+}
+
+/* Links styling inside the sidebar */
+.links {
+    text-decoration: none;
+    color: #333; /* Darker text for readability */
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: start;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* Active link (highlighted when selected) */
+.active {
+    background-color: #e0f7fa; /* Light cyan for active item */
+    border-left: 5px solid #00796b; /* Green left border to highlight the active link */
+    padding-left: 25px; /* Indentation for active item */
+}
+
+/* Link hover effect */
+.links:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+    padding-left: 25px; /* Slight left indentation on hover */
+}
+
+/* Icon styling */
+.links img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+/* Icon scaling effect when hovered or active */
+.links:hover img, .active img {
+    transform: scale(1.1); /* Slight scaling of the icon on hover or active */
+}
+
+/* Text styling inside each link */
+.links p {
+    font-size: 16px; /* Standard font size */
+    font-weight: 500; /* Medium weight for readability */
+    margin: 0; /* Remove extra margin */
+    transition: color 0.3s ease;
+}
+
+/* Text color change when hovered */
+.links:hover p, .active p {
+    color: #00796b; /* Green text color when hovered or active */
+}
+
+/* Final tweaks for the sidebar (optional) */
+.main::after {
+    content: "";
+    display: block;
+    flex-grow: 1;
+}
+
+/* ======= RESPONSIVE DESIGN ======= */
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .main {
+        width: 70px; /* Reduce sidebar width */
+    }
+
+    /* Hide paragraph text on small screens */
+    .links p {
+        display: none; /* Hide text */
+    }
+
+    /* Adjust icon size for small screens */
+    .links img {
+        width: 20px;
+        height: 20px; /* Smaller icons */
+    }
+
+    /* Optional: Make the sidebar slightly larger on hover for usability */
+    .main:hover {
+        width: 200px; /* Expand the sidebar when hovering */
+    }
+
+    .main:hover .links p {
+        display: inline-block; /* Show text again when sidebar is hovered */
+    }
+}

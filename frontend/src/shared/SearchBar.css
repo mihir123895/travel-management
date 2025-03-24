@@ -1,0 +1,125 @@
+/* Search Bar */
+.search__bar {
+    padding-left: 0.5rem 1rem;
+    border-radius: 50px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    width: max-content;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+/* Form Group */
+.form__group {
+    display: flex;
+    align-items: center;
+}
+
+/* Form Input */
+.form__group input {
+    border: none;
+    font-size: 0.9rem;
+    color: var(--heading-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    width: 200px; /* Default width */
+}
+
+/* Input Focus */
+.form__group input:focus {
+    outline: none;
+}
+
+/* Form Span */
+.form__group span {
+    font-size: 1.8rem;
+    color: #ee6e6e;
+}
+
+/* Form Heading */
+.form__group h6 {
+    margin-bottom: 0;
+}
+
+/* Right Border for input */
+.form__group fast {
+    border-right: 2px solid #ddd;
+}
+
+/* Search Icon */
+.search__icon i {
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: 10px 5px 10px 5px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .search__bar {
+        width: 100%; /* Make the search bar full width on medium devices */
+        padding: 0.5rem 1rem;
+    }
+
+    .form__group input {
+        width: 80%; /* Adjust input width */
+        font-size: 1rem; /* Increase font size for readability */
+    }
+
+    .search__icon i {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .search__bar {
+        width: 100%; /* Full width for smaller devices */
+        padding: 0.5rem 1rem;
+    }
+
+    .form__group input {
+        width: 70%; /* More space for the input */
+    }
+
+    .search__icon i {
+        font-size: 1.3rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .search__bar {
+        width: 100%; /* Full width for smaller screens */
+        padding: 0.5rem 1rem;
+        margin-top: 30px; /* Adjust top margin for mobile */
+    }
+
+    .form__group {
+        flex-direction: column; /* Stack the input and icon vertically */
+        align-items: flex-start;
+    }
+
+    .form__group input {
+        width: 100%; /* Make the input full width */
+        font-size: 1.2rem; /* Increase font size for readability */
+    }
+
+    .search__icon i {
+        font-size: 1.5rem; /* Larger icon on small screens */
+        margin-top: 0.5rem; /* Space between the input and icon */
+    }
+}
+
+@media (max-width: 480px) {
+    .form__group input {
+        width: 100%; /* Full width on the smallest screens */
+        font-size: 1rem; /* Decrease font size for very small screens */
+    }
+
+    .search__icon i {
+        font-size: 1.4rem; /* Smaller icon on very small screens */
+    }
+}
