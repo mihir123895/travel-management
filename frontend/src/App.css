@@ -4,13 +4,14 @@
 
 :root {
   --primary-color: #ff9901;
-  --secondary-color: #d18a2d;
-  --heading-color: #0b2727;
+  --secondary-color: #ff9901;
+  --heading-color: #0b2727; 
   --text-color: #6e7074;
   --font-name: "Montserrat", sans-serif;
   --subtitle-font-name: "Island Moments", cursive;
 }
 
+/* ff9901 */
 * {
   margin: 0;
   padding: 0;
