@@ -62,7 +62,7 @@
 
 /* Text color change when hovered */
 .links:hover p, .active p {
-    color: #00796b; /* Green text color when hovered or active */
+    color: #00796b;
 }
 
 /* Final tweaks for the sidebar (optional) */
@@ -82,21 +82,12 @@
 
     /* Hide paragraph text on small screens */
     .links p {
-        display: none; /* Hide text */
+        display: none; 
     }
 
     /* Adjust icon size for small screens */
     .links img {
         width: 20px;
         height: 20px; /* Smaller icons */
-    }
-
-    /* Optional: Make the sidebar slightly larger on hover for usability */
-    .main:hover {
-        width: 200px; /* Expand the sidebar when hovering */
-    }
-
-    .main:hover .links p {
-        display: inline-block; /* Show text again when sidebar is hovered */
     }
 }

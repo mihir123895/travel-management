@@ -1,115 +1,155 @@
+/* General styles */
 .header {
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    border-bottom: 2px solid #e0e0e0;
-    background-color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1050;  /* Make sure the header is on top of other elements */
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s ease; /* Smooth transition when scrolling */
 }
 
-.logo img {
-    width: 110px;
-    transition: transform 0.3s ease;
-    position: relative;
-    right: 28%;
-    bottom: 11px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.logo img:hover {
-    transform: scale(1.1);
+.navbar-brand img {
+  width: 150px;
+  height: auto;
 }
 
-.menu {
-    margin-bottom: 0;
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.nav__item a {
-    text-decoration: none;
-    color: var(--heading-color);
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0px 15px;
-    display: block;
-    transition: all 0.3s ease;
+.navbar-toggler-icon {
+  font-size: 1.5rem;
+  display: block;
 }
 
-.nav__item a:hover {
-    background-color: #f1f1f1;
-    color: var(--secondary-color);
-    border-radius: 5px;
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+  flex-direction: row;
 }
 
-.nav__item a.active__link {
-    color: rgb(0, 0, 0);
-    border-bottom: 2px solid var(--secondary-color);
+.navbar-nav {
+  display: flex;
+  gap: 2rem;
 }
 
-.mobile__menu {
-    font-size: 1.3rem;
-    color: var(--heading-color);
-    display: none;
-    cursor: pointer;
+.nav-item {
+  list-style: none;
 }
 
-.sticky__header {
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    background: #fff;
-    position: sticky;
-    top: 0;
-    left: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Smooth color change on hover */
 }
 
-.custom-menu {
-    margin-right: 30px;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
+.nav-link:hover,
+.nav-link.active {
+  color: #007bff; /* Active and hover link color */
 }
 
-.navigations {
-    cursor: pointer;
+.navbar-btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.btn:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+.navbar-btns .btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth button color transition */
 }
 
-.btn.secondary__btn {
-    background-color: #f0f0f0;
-    color: var(--heading-color);
-    border: 1px solid #ddd;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
 }
 
-.btn.primary__btn {
-    background-color: var(--primary-color);
-    color: #fff;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.btn-secondary:hover {
+  background-color: #5a6268;
 }
 
-.btn a {
-    text-decoration: none;
-    color: inherit;
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color: #23272b;
+}
+
+.navbar-admin,
+.navbar-username {
+  margin: 0;
+}
+
+/* Mobile Menu Styles */
+.navbar-collapse.show {
+  display: block;
 }
 
 @media (max-width: 768px) {
-    .mobile__menu {
-        display: block;
-    }
+  .navbar-collapse {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999; /* Ensure the mobile menu is above other elements */
+  }
 
-    .navigation {
-        display: none;
-    }
+  .navbar-collapse.show {
+    display: flex;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    text-align: center; /* Center-align items in mobile view */
+  }
+
+  .navbar-btns {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .navbar-btns .btn {
+    width: 100%; /* Make buttons full-width on mobile */
+    padding: 0.75rem 0;
+  }
 }

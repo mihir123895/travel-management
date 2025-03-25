@@ -1,49 +1,49 @@
-
-.login__img{
+/* Default Styles */
+.login__img {
     width: 60%;
     text-align: center;
 }
 
-.login__img img{
+.login__img img {
     width: 70%;
     object-fit: contain;
 }
 
-.login__form{
+.login__form {
     padding: 50px;
     background: var(--secondary-color);
     position: relative;
 }
 
-.login__container{
-    box-shadow: rgba(17,12,46,0.15) 0px 48px 100px 0px;
+.login__container {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     margin-top: 100px;
 }
 
-.login__form .user{
+.login__form .user {
     width: 80px;
     height: 80px;
     position: absolute;
     top: -9%;
     left: 50%;
-    transform: translate(-50% , -9%);
+    transform: translate(-50%, -9%);
 }
 
-.login__form .user img{
+.login__form .user img {
     width: 100%;
 }
 
-.login__form h2{
+.login__form h2 {
     color: #fff;
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.login__form{
+.login__form {
     width: 40%;
 }
 
-.login__form input{
+.login__form input {
     width: 100%;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -52,26 +52,55 @@
     color: var(--heading-color);
 }
 
-.login__form input:focus{
+.login__form input:focus {
     outline: none;
 }
 
-.auth__btn{
+.auth__btn {
     background: var(--heading-color) !important;
     width: 100%;
     color: #fff !important;
 }
 
-.login__form p{
+.login__form p {
     font-size: 0.9rem;
     color: #fff;
     margin-top: 1.5rem;
     text-align: center;
 }
 
-.login__form p a{
+.login__form p a {
     color: var(--heading-color);
     text-decoration: none;
     margin-left: 5px;
     font-weight: 500;
 }
+
+/* ========================= RESPONSIVENESS ========================= */
+
+/* Mobile and Small Screens */
+@media (max-width: 768px) {
+
+    /* Hide the image on smaller screens */
+    .login__img {
+        display: none;
+    }
+
+    /* Login form takes up the full width */
+    .login__form {
+        width: 100%;
+        padding: 20px; /* Adjust padding for better spacing */
+    }
+
+    /* Adjust the image within the user avatar in the form */
+    .login__form .user {
+        top: -12%; /* Adjust the user icon position */
+        width: 60px;
+        height: 60px;
+    }
+
+    .login__form h2 {
+        margin-bottom: 1.5rem;
+    }
+}
+

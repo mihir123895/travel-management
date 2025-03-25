@@ -98,19 +98,19 @@ const Footer = () => {
                   <span><i class="ri-mail-line"></i></span>
                   Email:
                  </h6>
-                 <p className="mb-0">dhruv.vatsa1111@gmail.com</p>
+                 <p className="mb-0">hina66@gmail.com</p>
                  </ListGroupItem>
                  <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
                  <h6 className="mb-0 d-flex align-items-center gap-2">
                   <span><i class="ri-phone-fill"></i></span>
                   Phone:
                  </h6>
-                 <p className="mb-0">+91 74286 23215</p>
+                 <p className="mb-0">+91 9999999999</p>
                  </ListGroupItem>
             </ListGroup>
           </Col>
           <Col lg='12' className='text-center pt-5'>
-            <p className='copyright'>Copyright {year} , Design and Developed by Dhruv Vatsa.
+            <p className='copyright'>Copyright {year} , Design and Developed by Rana Hina.
              All rights reserved.</p>
           </Col>
         </Row>

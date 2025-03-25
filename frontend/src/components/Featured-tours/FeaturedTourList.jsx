@@ -23,12 +23,14 @@ const FeaturedTourList = () => {
         error && <h4>{error}</h4>
       }
 
-    { 
-     !loading && !error && featuredTours?.slice(0,8).map(tour =>(
-      <div className="tour-card-container" key={tour._id}>
+{ 
+  !loading && !error && Array.isArray(featuredTours) && featuredTours.slice(0, 8).map(tour => (
+    <div className="tour-card-container" key={tour._id}>
       <TourCard tour={tour} />
     </div>
-    ))}
+  ))
+}
+
   </>
   );
 };

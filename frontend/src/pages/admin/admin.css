@@ -101,12 +101,16 @@
 
     /* Hide the paragraph text and show only icons */
     .sidebar .sidebar-container .links p {
-        visibility: hidden; /* Hide the text */
-        position: absolute; /* Prevent it from affecting layout */
+        visibility: hidden; 
+        position: absolute; 
+    }
+    .sidebar .sidebar-container .links p:active{
+        visibility: hidden;
     }
 
+
     .sidebar .sidebar-container .links img {
-        margin-left: 0; /* Center the icons when text is hidden */
+        margin-left: 0;
     }
 }
 

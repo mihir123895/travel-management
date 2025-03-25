@@ -19,21 +19,20 @@ const SearchResultList = () => {
     <>
       <CommonSection title={'Tour Search- Result'} />
       <section>
-        <Container>
-          <Row>
-            {
-              data.length ===0 ? 
-              <h4 className="text-center">No tour found</h4> 
-              : data?.map(tour =>(
-                <Col lg='3' className="mb-4" key={tour._id}>
-                  <TourCard tour={tour} />
-                  </Col>)
-              )
-            }
-
-          </Row>
-        </Container>
-      </section>
+  <div className="container">
+    <div className="row">
+      {
+        data.length === 0 ? 
+        <h4 className="text-center">No tour found</h4> 
+        : data?.map(tour => (
+          <div  key={tour._id}>
+            <TourCard tour={tour} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
       <Newsletter />
       <Footer/>
     </>
