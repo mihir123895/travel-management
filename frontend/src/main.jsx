@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
-import AdminContextProvider from "./context/AdminContext";
+import AdminContextProvider from "./context/AdminContext"; 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
