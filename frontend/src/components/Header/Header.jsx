@@ -6,36 +6,46 @@ import { AdminContext } from "../../context/AdminContext";
 import "./header.css";
 
 const Header = () => {
+ 
   const { aToken } = useContext(AdminContext);
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isMobileMenuVisible, setMobileMenuVisible] = useState(false);
+  // const [userDatas, setUserData] = useState(null);
 
-  const nav_links = aToken
-    ? [
-        {
-          path: "/home",
-          display: "Home",
-        },
-        {
-          path: "/tours",
-          display: "Tours",
-        },
-      ]
-    : [
-        {
-          path: "/home",
-          display: "Home",
-        },
-        {
-          path: "/tours",
-          display: "Tours",
-        },
-        {
-          path: "/admin-login",
-          display: "Admin",
-        },
-      ];
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem("user");
+  //   if (storedUser) {
+  //     const parsedUser = JSON.parse(storedUser);
+  //     setUserData(parsedUser);
+  //     console.log(parsedUser);
+  //   }
+  // }, []);
+  
+  // Safe access
+  // console.log(userDatas?._id);
+  
+  let nav_links;
+
+  if (aToken) {
+    nav_links = [
+      { path: "/home", display: "Home" },
+      { path: "/tours", display: "Tours" },
+    ];
+  } else if (user) {
+    nav_links = [
+      { path: "/home", display: "Home" },
+      { path: "/tours", display: "Tours" },
+      { path: `/user-bookings`, display: "My Bookings" },
+    ];
+  } else {
+    nav_links = [
+      { path: "/home", display: "Home" },
+      { path: "/tours", display: "Tours" },
+      { path: "/admin-login", display: "Admin" },
+    ];
+  }
+  
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -77,6 +87,7 @@ const Header = () => {
             <img src={logo} alt="Logo" width="150" />
           </a>
           
+         
           {/* Navbar Toggler (for mobile) */}
           <button
             className="navbar-toggler"
@@ -92,6 +103,7 @@ const Header = () => {
           {/* Navbar Links */}
           <div className={`collapse navbar-collapse ${isMobileMenuVisible ? "show" : ""}`} id="navbarNav">
             <ul className="navbar-nav ml-auto">
+            
               {nav_links.map((item, index) => (
                 
                 <li className="nav-item" key={index}>
@@ -105,12 +117,42 @@ const Header = () => {
                   </NavLink>
                  
                 </li>
+
+                
               ))}
+                <li className="nav-item custom ">
+             
+            {aToken ? (
+              <>
+                <Link className="nav-link"
+                    activeClassName="active" onClick={logoutAdmin}>
+                  Logout
+                </Link>
+              </>
+            ) : user ? (
+              <>
+                
+                <NavLink className="nav-link"
+                activeClassName="active" onClick={logout}>
+                  Logout
+                </NavLink >
+              </>
+            ) : (
+              <> 
+              
+              <NavLink className="nav-link"
+              activeClassName="active" to="/login">Login</NavLink>
+               
+              <NavLink className="nav-link"
+                activeClassName="active"  to="/register">Register</NavLink>  
+              </>
+            )}
+              </li>
             </ul>
           </div>
 
           {/* Navbar Buttons (Login/Logout/Register) */}
-          <div className="d-flex align-items-center gap-4">
+          <div className=" align-items-center gap-4 custom__btn">
             {aToken ? (
               <>
                 <h5
@@ -141,6 +183,7 @@ const Header = () => {
               </>
             )}
           </div>
+          
         </div>
       </nav>
     </header>

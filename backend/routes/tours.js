@@ -18,7 +18,7 @@ router.post("/" ,upload.single('photo'), createTour);
 router.put("/:id" ,verifyAdmin, updateTour);
 
 //delete tour
-router.delete("/delete-tour" ,authAdmin, deleteTour);
+router.delete("/delete-tour", deleteTour);
 
 //get single tour
 router.get("/:id" , getSingleTour);

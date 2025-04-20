@@ -44,4 +44,33 @@ export const getAllBooking = async(req,res) =>{
         res.status(500).json({success:false,message:'internal server error'})
     }
     }
+    export const deleteBooking = async (req, res) => {
+        const { id } = req.body; // make sure you're destructuring correctly
+      
+        try {
+          const deletedBooking = await Booking.findByIdAndDelete(id);
+      
+          if (!deletedBooking) {
+            return res.status(404).json({
+              success: false,
+              message: 'Booking not found',
+            });
+          }
+      
+          res.status(200).json({
+            success: true,
+            message: 'Booking deleted successfully',
+            data: deletedBooking,
+          });
+        } catch (err) {
+          console.error(err);
+          res.status(500).json({
+            success: false,
+            message: 'Something went wrong',
+          });
+        }
+      };
+
+
+    
 

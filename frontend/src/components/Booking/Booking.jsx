@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react'
-import './booking.css'
-import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
-import { BASE_URL } from '../../utils/config'
+import React, { useState, useContext } from "react";
+import "./booking.css";
+import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../utils/config";
 
 const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
@@ -16,54 +16,55 @@ const Booking = ({ tour, avgRating }) => {
     userId: user && user._id,
     userEmail: user && user.email,
     tourName: title,
-    fullName: '',
-    phone: '',
+    fullName: "",
+    phone: "",
     guestSize: 1,
-    bookAt: ''
-  })
+    bookAt: "",
+  });
 
-  const handleChange = e => {
-    setBooking(prev => ({ ...prev, [e.target.id]: e.target.value }))
+  const handleChange = (e) => {
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async e => {
+  const handleClick = async (e) => {
     e.preventDefault();
     console.log(booking);
 
     try {
       if (!user || user === undefined || user === null) {
-        return alert('Please Sign In!');
+        return alert("Please Sign In!");
       }
 
       const res = await fetch(`${BASE_URL}/booking`, {
-        method: 'post',
+        method: "post",
         headers: {
-          'content-type': 'application/json',
+          "content-type": "application/json",
         },
-        credentials: 'include',
-        body: JSON.stringify(booking)
-      })
+        credentials: "include",
+        body: JSON.stringify(booking),
+      });
 
-      const result = await res.json()
+      const result = await res.json();
 
       if (!res.ok) {
         return alert(result.message);
       }
       navigate("/thank-you");
-
     } catch (err) {
-      alert(err.message)
+      alert(err.message);
     }
-
   };
 
   const serviceFee = 200;
 
-  const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
+  const totalAmount =
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
   return (
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
-        <h3>₹{price} <span>/per person</span></h3>
+        <h3>
+          ₹{price} <span>/per person</span>
+        </h3>
 
         <span className="tour__rating d-flex align-items-center">
           <i class="ri-star-s-fill"></i>
@@ -75,20 +76,41 @@ const Booking = ({ tour, avgRating }) => {
         <h5>Information</h5>
         <Form className="booking__info-form" onSubmit={handleClick}>
           <FormGroup>
-            <input type="text" placeholder="Full Name" id="fullName"
-              required onChange={handleChange} />
+            <input
+              type="text"
+              placeholder="Full Name"
+              id="fullName"
+              required
+              onChange={handleChange}
+            />
           </FormGroup>
           <FormGroup>
-            <input type="number" placeholder="Phone" id="phone"
-              required onChange={handleChange} />
+            <input
+              type="number"
+              placeholder="Phone"
+              id="phone"
+              required
+              onChange={handleChange}
+            />
           </FormGroup>
           <FormGroup className="d-flex align-items-center gap-3">
-            <input type="date" placeholder="" id="bookAt"
-              required onChange={handleChange} />
-            <input type="number" placeholder="Guest" id="guestSize"
-              required onChange={handleChange} />
-          </FormGroup>
+            <input
+              type="date"
+              id="bookAt"
+              required
+              onChange={handleChange}
+              min={new Date().toISOString().split("T")[0]}
+              max="2025-04-29"
+            />
 
+            <input
+              type="number"
+              placeholder="Guest"
+              id="guestSize"
+              required
+              onChange={handleChange}
+            />
+          </FormGroup>
         </Form>
       </div>
       {/*====================booking form end========================*/}
@@ -98,7 +120,8 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-            ₹{price} <i class="ri-close-line"></i>1 person</h5>
+              ₹{price} <i class="ri-close-line"></i>1 person
+            </h5>
             <span>₹{price}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
@@ -115,9 +138,8 @@ const Booking = ({ tour, avgRating }) => {
           Book Now
         </Button>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Booking
+export default Booking;

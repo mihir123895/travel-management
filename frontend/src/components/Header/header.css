@@ -58,6 +58,7 @@
   color: #333;
   font-weight: 500;
   transition: color 0.3s ease; /* Smooth color change on hover */
+  
 }
 
 .nav-link:hover,
@@ -115,7 +116,19 @@
   display: block;
 }
 
+.custom{
+  display: none;
+}
+
+.custom__btn  {
+  display: flex
+}
 @media (max-width: 768px) {
+
+  .navbar-brand img {
+    width: 120px;
+    height: auto;
+  }
   .navbar-collapse {
     display: none;
     flex-direction: column;
@@ -152,4 +165,20 @@
     width: 100%; /* Make buttons full-width on mobile */
     padding: 0.75rem 0;
   }
+}
+
+@media (max-width: 991px) {
+  .custom  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 20px;
+    
+  }
+
+  .custom__btn{
+    display: none;
+  }
+
 }

@@ -14,7 +14,9 @@ import AddTours from '../pages/admin/AddTours';
 import MyTours from '../pages/admin/MyTours';
 import UserBooked from '../pages/admin/UserBooked';
 import LoginPage from '../pages/admin/LoginPage';
+import UserBookeds from '../components/userBookings/UserBooked';
 import NotFound from '../pages/NotFound'; // Import the NotFound component
+
 
 const Routers = () => {
   return (
@@ -29,6 +31,7 @@ const Routers = () => {
         <Route path='/thank-you' element={<ThankYou />} />
         <Route path='/tours/search' element={<SearchResultList />} />
         <Route path="/admin-login" element={<LoginPage />} />
+        <Route path="/user-bookings" element={<UserBookeds />} />
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="add-tour" element={<AddTours />} />

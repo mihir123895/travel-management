@@ -42,6 +42,7 @@ const Login = () => {
       if(!res.ok) alert(result.message);
       console.log(result.data);
 
+
       dispatch({type:'LOGIN_SUCCESS', payload:result.data})
       navigate('/');
 

@@ -34,7 +34,16 @@ const TourCard = ({ tour }) => {
         <h5>₹{price} <span> /per person</span></h5>
 
         {aToken ? (
-          ""
+          <> <button className="btn booking__btn">
+          <Link to={`/tours/${_id}`} className="booking__link">Show </Link>
+        </button>
+        <button onClick={()=>deleteTour(_id)} className="btn booking__btn">
+         Delete
+        </button>
+        
+        </>
+         
+        
         ) : (
           <button className="btn booking__btn">
             <Link to={`/tours/${_id}`} className="booking__link">Book Tour</Link>

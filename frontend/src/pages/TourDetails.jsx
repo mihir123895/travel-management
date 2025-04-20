@@ -11,6 +11,7 @@ import useFetch from '../hooks/useFetch'
 import { BASE_URL } from '../utils/config.js'
 import { AuthContext } from '../context/AuthContext'
 import Footer from '../components/Footer/Footer.jsx'
+import { AdminContext } from '../context/AdminContext.jsx'
 
 
 const TourDetails = () => {
@@ -19,6 +20,7 @@ const TourDetails = () => {
   const reviewMsgRef = useRef('');
   const [tourRating, setTourRating] = useState(null);
   const { user } = useContext(AuthContext)
+  const {aToken} = useContext(AdminContext)
 
   const { data: tour, loading, error } = useFetch(`${BASE_URL}/tours/${id}`);
 
@@ -160,9 +162,10 @@ const TourDetails = () => {
                   {/*================tour reviews section end==================== */}
                 </div>
               </Col>
-              <Col lg='4'>
+
+              {aToken ? null :<Col lg='4'>
                 <Booking tour={tour} avgRating={avgRating} />
-              </Col>
+              </Col>}
             </Row>
           }
         </Container>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './userbooked.css';
-import { AdminContext } from '../../context/AdminContext';
+import '../../pages/admin/userbooked.css';
+
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { AdminContext } from '../../context/AdminContext';
 
 const UserBooked = () => {
   const [userData, setUserData] = useState(null);
@@ -10,17 +11,56 @@ const UserBooked = () => {
   const { backendUrl } = useContext(AdminContext);
 
 
- 
+ const [userDatas, setUserDatas] = useState(null);
+
   useEffect(() => {
-    // Replace with your backend API endpoint
-    fetch(`${backendUrl}/api/v1/booking`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.data);
-        setUserData(data.data);
-      })
-      .catch((error) => console.error('Error fetching user data:', error));
-  }, [backendUrl]);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUserDatas(parsedUser);
+      console.log(parsedUser);
+    }
+  }, []);
+
+
+  const fetchUserBookings = async (userId) => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/v1/booking`);
+  
+      if (data.success) {
+        // Filter bookings where booking.userId === the userId passed in
+        const userBookings = data.data.filter(booking => booking.userId === userId);
+        console.log(userBookings);
+        setUserData(userBookings);
+      }
+  
+    } catch (error) {
+      console.error('Error fetching user bookings:', error);
+      toast.error('Error fetching user bookings');
+    }
+  };
+  
+  useEffect(() => {
+    if (userDatas?._id) {
+      fetchUserBookings(userDatas._id);
+    }
+  }, [userDatas]);
+  
+
+ 
+
+//   useEffect(() => {
+//     // Replace with your backend API endpoint
+//     fetch(`${backendUrl}/api/v1/booking`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data.data);
+//         setUserData(data.data);
+//       })
+//       .catch((error) => console.error('Error fetching user data:', error));
+//   }, [backendUrl]);
+
+
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
