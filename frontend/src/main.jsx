@@ -18,5 +18,5 @@ root.render(
         <App />
       </BrowserRouter>
     </AuthContextProvider>
-  </AdminContextProvider>
+  </AdminContextProvider> 
 );
