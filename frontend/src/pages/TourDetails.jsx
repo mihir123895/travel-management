@@ -29,6 +29,10 @@ const TourDetails = () => {
   const { totalRating, avgRating } = calculateAvgRating(reviews);
 
   const options = { day: "numeric", month: "long", year: "numeric" };
+  
+    const handleRating = (rating) => {
+      setTourRating(rating);
+    };
 
   const submitHandler = async e => {
     e.preventDefault();
@@ -119,21 +123,23 @@ const TourDetails = () => {
                   <div className="tour__reviews mt-4">
                     <h4>Reviews ({reviews?.length} reviews)</h4>
                     <Form onSubmit={submitHandler}>
-                      <div className="d-flex align-items-center gap-3 mb-4 rating__group">
-                        1 <span onClick={() => setTourRating(1)}>
-                          <i class="ri-star-s-fill"></i></span>
-                        2 <span onClick={() => setTourRating(2)}>
-                          <i class="ri-star-s-fill"></i></span>
-                        3 <span onClick={() => setTourRating(3)}>
-                          <i class="ri-star-s-fill"></i></span>
-                        4 <span onClick={() => setTourRating(4)}>
-                          <i class="ri-star-s-fill"></i></span>
-                        5 <span onClick={() => setTourRating(5)}>
-                          <i class="ri-star-s-fill"></i></span>
-                          <button className='btn primary__btn text-white' type='submit'>
-                          Submit
-                        </button>
-                      </div>
+                    <div className="d-flex align-items-center gap-3 mb-4 rating__group">
+      1 <span onClick={() => setTourRating(1)}>
+        <i className={tourRating >= 1 ? "ri-star-s-fill text-warning" : "ri-star-s-line"}></i>
+      </span>
+      2 <span onClick={() => setTourRating(2)}>
+        <i className={tourRating >= 2 ? "ri-star-s-fill text-warning" : "ri-star-s-line"}></i>
+      </span>
+      3 <span onClick={() => setTourRating(3)}>
+        <i className={tourRating >= 3 ? "ri-star-s-fill text-warning" : "ri-star-s-line"}></i>
+      </span>
+      4 <span onClick={() => setTourRating(4)}>
+        <i className={tourRating >= 4 ? "ri-star-s-fill text-warning" : "ri-star-s-line"}></i>
+      </span>
+      5 <span onClick={() => setTourRating(5)}>
+        <i className={tourRating >= 5 ? "ri-star-s-fill text-warning" : "ri-star-s-line"}></i>
+      </span>
+    </div>
                       <div className="review__input">
                         <input type="text" ref={reviewMsgRef} placeholder="Share your Thoughts!"/>
                         <button className='btn primary__btn text-white' type='submit'>
