@@ -7,7 +7,7 @@ const router= express.Router();
 
 import { verifyAdmin } from "../utils/verifyToken.js";
 import upload from "../middlewares/multer.js";
-import authAdmin from "../middlewares/authAdmin.js";
+
 
 router.post('/login-admin',loginAdmin)
 
