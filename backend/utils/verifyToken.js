@@ -8,7 +8,7 @@ export const verifyToken = (req, res, next) => {
             success: false,
             message: "You are not authorized"
         })
-    }
+    } 
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
         if (err) {
             return res.status(401).json({

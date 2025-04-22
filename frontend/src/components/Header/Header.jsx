@@ -30,6 +30,7 @@ const Header = () => {
     nav_links = [
       { path: "/home", display: "Home" },
       { path: "/tours", display: "Tours" },
+      { path: "/admin", display: "Admin" },
       
     ];
   } else if (user) {

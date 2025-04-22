@@ -122,6 +122,5 @@
 }
 
 .card.naruto {
-  background: linear-gradient(135deg, #FFA500, #FF6347); /* orange to tomato */
-  color: #fff;
+  background-color:  #ff9901 ;
 }

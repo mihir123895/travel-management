@@ -39,12 +39,21 @@ const TourDetails = () => {
         alert('Please Sign In!');
       }
 
-      const reviewObj = {
-        username :user?.username,
-        reviewText,
-        rating:tourRating,
+
+      if(reviewText){
+        var reviewObj = {
+          username :user?.username,
+          reviewText,
+          rating:tourRating,
+        }
+      }else {
+        var reviewObj = {
+          username :user?.username,
+          rating:tourRating,
+        }
       }
 
+     
       const res= await fetch(`${BASE_URL}/review/${id}`,{
         method:'post',
         headers:{
@@ -121,9 +130,12 @@ const TourDetails = () => {
                           <i class="ri-star-s-fill"></i></span>
                         5 <span onClick={() => setTourRating(5)}>
                           <i class="ri-star-s-fill"></i></span>
+                          <button className='btn primary__btn text-white' type='submit'>
+                          Submit
+                        </button>
                       </div>
                       <div className="review__input">
-                        <input type="text" ref={reviewMsgRef} placeholder="Share your Thoughts!" required />
+                        <input type="text" ref={reviewMsgRef} placeholder="Share your Thoughts!"/>
                         <button className='btn primary__btn text-white' type='submit'>
                           Submit
                         </button>
