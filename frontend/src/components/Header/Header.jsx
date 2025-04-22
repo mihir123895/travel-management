@@ -6,7 +6,6 @@ import { AdminContext } from "../../context/AdminContext";
 import "./header.css";
 
 const Header = () => {
- 
   const { aToken } = useContext(AdminContext);
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,16 +20,17 @@ const Header = () => {
   //     console.log(parsedUser);
   //   }
   // }, []);
-  
+
   // Safe access
   // console.log(userDatas?._id);
-  
+
   let nav_links;
 
   if (aToken) {
     nav_links = [
       { path: "/home", display: "Home" },
       { path: "/tours", display: "Tours" },
+      
     ];
   } else if (user) {
     nav_links = [
@@ -45,7 +45,6 @@ const Header = () => {
       { path: "/admin-login", display: "Admin" },
     ];
   }
-  
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -53,14 +52,12 @@ const Header = () => {
   };
 
   const logoutAdmin = () => {
-
     localStorage.removeItem("aToken");
 
     dispatch({ type: "LOGOUT" });
     navigate("/");
-    window.location.reload();  // Force page reload
+    window.location.reload(); // Force page reload
   };
-  
 
   useEffect(() => {
     // Sticky Header on Scroll
@@ -86,8 +83,7 @@ const Header = () => {
           <a className="navbar-brand" href="#">
             <img src={logo} alt="Logo" width="150" />
           </a>
-          
-         
+
           {/* Navbar Toggler (for mobile) */}
           <button
             className="navbar-toggler"
@@ -101,52 +97,69 @@ const Header = () => {
           </button>
 
           {/* Navbar Links */}
-          <div className={`collapse navbar-collapse ${isMobileMenuVisible ? "show" : ""}`} id="navbarNav">
+          <div
+            className={`collapse navbar-collapse ${
+              isMobileMenuVisible ? "show" : ""
+            }`}
+            id="navbarNav"
+          >
             <ul className="navbar-nav ml-auto">
-            
               {nav_links.map((item, index) => (
-                
                 <li className="nav-item" key={index}>
-  
                   <NavLink
                     to={item.path}
                     className="nav-link"
                     activeClassName="active"
+                    onClick={() => setMobileMenuVisible(false)} // ✅ Add this
                   >
                     {item.display}
                   </NavLink>
-                 
                 </li>
-
-                
               ))}
-                <li className="nav-item custom ">
-             
-            {aToken ? (
-              <>
-                <Link className="nav-link"
-                    activeClassName="active" onClick={logoutAdmin}>
-                  Logout
-                </Link>
-              </>
-            ) : user ? (
-              <>
-                
-                <NavLink className="nav-link"
-                activeClassName="active" onClick={logout}>
-                  Logout
-                </NavLink >
-              </>
-            ) : (
-              <> 
-              
-              <NavLink className="nav-link"
-              activeClassName="active" to="/login">Login</NavLink>
-               
-              <NavLink className="nav-link"
-                activeClassName="active"  to="/register">Register</NavLink>  
-              </>
-            )}
+
+              <li className="nav-item custom ">
+                {aToken ? (
+                  <Link
+                    className="nav-link"
+                    activeClassName="active"
+                    onClick={() => {
+                      logoutAdmin();
+                      setMobileMenuVisible(false); // ✅ Add this
+                    }}
+                  >
+                    Logout
+                  </Link>
+                ) : user ? (
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    onClick={() => {
+                      logout();
+                      setMobileMenuVisible(false); // ✅ Add this
+                    }}
+                  >
+                    Logout
+                  </NavLink>
+                ) : (
+                  <>
+                    <NavLink
+                      className="nav-link"
+                      activeClassName="active"
+                      to="/login"
+                      onClick={() => setMobileMenuVisible(false)} // ✅ Add this
+                    >
+                      Login
+                    </NavLink>
+                    <NavLink
+                      className="nav-link"
+                      activeClassName="active"
+                      to="/register"
+                      onClick={() => setMobileMenuVisible(false)} // ✅ Add this
+                    >
+                      Register
+                    </NavLink>
+                  </>
+                )}
               </li>
             </ul>
           </div>
@@ -183,7 +196,6 @@ const Header = () => {
               </>
             )}
           </div>
-          
         </div>
       </nav>
     </header>

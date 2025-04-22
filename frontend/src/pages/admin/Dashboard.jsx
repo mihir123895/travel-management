@@ -46,11 +46,11 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <div className="card">
+      <div className="card naruto">
         <h3>Total Bookings</h3>
         <p className="card-value">{userData}</p> {/* Pass totalBookings prop */}
       </div>
-      <div className="card">
+      <div className="card naruto">
         <h3>Total Tours</h3>
         <p className="card-value">{tours}</p> {/* Pass totalTours prop */}
       </div>

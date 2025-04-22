@@ -75,11 +75,11 @@ const UserBooked = () => {
 
       {filteredData.length > 0 ? (
         filteredData.map((item, index) => (
-          <div key={index} className="card">
+          <div key={index} className="card naruto">
             <div className="card-header">
               <h3>{item.tourName}</h3>
             </div>
-            <div className="card-body">
+            <div className="card-body ">
               <p><strong>Full Name:</strong> {item.fullName}</p>
               <p><strong>Email:</strong> {item.userEmail}</p>
               <p><strong>Guest Size:</strong> {item.guestSize}</p>
@@ -87,7 +87,10 @@ const UserBooked = () => {
               <p><strong>Booking Date:</strong> {new Date(item.bookAt).toLocaleDateString()}</p>
             </div>
 
-            <button onClick={()=>deleteBooking(item._id)}>Delete</button>
+            <button className="anime-btn" onClick={() => deleteBooking(item._id)}>
+  Cancel
+</button>
+
           </div>
         ))
       ) : (

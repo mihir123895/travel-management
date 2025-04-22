@@ -1,3 +1,4 @@
+
 .tour__content img{
     width: 100%;
     border-radius: 0.5rem;
@@ -29,7 +30,7 @@
 }
 
 .tour__extra-details{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     column-gap: 2.7rem;
     margin-top: 1rem;
@@ -120,4 +121,15 @@
 
 .review__item span{
     font-weight: 500;
+}
+
+@media (min-width: 991px) {
+    .tour__extra-details{
+        display: flex;
+        align-items: center;
+        column-gap: 2.7rem;
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
 }
