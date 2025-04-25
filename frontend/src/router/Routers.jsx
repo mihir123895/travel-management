@@ -16,6 +16,7 @@ import UserBooked from '../pages/admin/UserBooked';
 import LoginPage from '../pages/admin/LoginPage';
 import UserBookeds from '../components/userBookings/UserBooked';
 import NotFound from '../pages/NotFound'; // Import the NotFound component
+import Resetpassword from '../pages/Resetpassword';
 
 
 const Routers = () => {
@@ -28,6 +29,7 @@ const Routers = () => {
         <Route path='/tours/:id' element={<TourDetails />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/resetpassword' element={<Resetpassword />} />
         <Route path='/thank-you' element={<ThankYou />} />
         <Route path='/tours/search' element={<SearchResultList />} />
         <Route path="/admin-login" element={<LoginPage />} />

@@ -1,3 +1,4 @@
+// models/User.js
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -7,11 +8,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+
     email: {
       type: String,
       required: true,
       unique: true,
     },
+
     password: {
       type: String,
       required: true,
@@ -25,8 +28,20 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
+
+    // 👇 OTP for password reset
+    resetOtp: {
+      type: String,
+    },
+
+    // 👇 Expiration time for OTP (5–10 minutes usually)
+    resetOtpExpires: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("User", userSchema);
+const User = mongoose.models.user || mongoose.model("User", userSchema);
+
+export default User;
