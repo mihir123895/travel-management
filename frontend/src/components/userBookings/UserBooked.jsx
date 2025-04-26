@@ -8,7 +8,7 @@ import { AdminContext } from '../../context/AdminContext';
 const UserBooked = () => {
   const [userData, setUserData] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // State to manage search query
-  const { backendUrl } = useContext(AdminContext);
+  const { backendUrl , aToken } = useContext(AdminContext);
 
 
  const [userDatas, setUserDatas] = useState(null);
@@ -215,13 +215,16 @@ const UserBooked = () => {
   </div>
 ) : null}
 
-
-             
+     
             </div>
 
-            <button className="anime-btn" onClick={() => handlePayment(item._id, item.tourName)}>
- Pay Online
-</button>
+            {!aToken && !item.payment && !item.cancelled && (
+  <button className="anime-btn" onClick={() => handlePayment(item._id, item.tourName)}>
+    Pay Online
+  </button>
+)}
+
+            
 <br />
 
             <button className="anime-btn" onClick={() => handleCancelBooking(item._id)}>
