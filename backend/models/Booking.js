@@ -28,6 +28,18 @@ const bookingSchema = new mongoose.Schema(
         type:Date,
       required:true,
     },
+    payment:{
+      type:Boolean,
+      default:false
+    },
+    cancelled:{
+      type:Boolean,
+      default:false
+    }, 
+    receiptId: {
+      type: String,
+      unique: true,
+    },
   },
   { timestamps: true }
 );

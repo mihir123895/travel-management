@@ -59,6 +59,9 @@ const Booking = ({ tour, avgRating }) => {
 
   const totalAmount =
     Number(price) * Number(booking.guestSize) + Number(serviceFee);
+
+   
+
   return (
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
