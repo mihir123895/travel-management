@@ -232,10 +232,14 @@ const UserBooked = () => {
 </button>
             
 <br />
+          
 
-<button className="anime-btn" onClick={() => deleteBooking(item._id)}>
-  Delete
-</button> 
+{aToken ? (
+  <button className="anime-btn" onClick={() => deleteBooking(item._id)}>
+    Delete
+  </button>
+) : null}
+
           </div>
         ))
       ) : (
