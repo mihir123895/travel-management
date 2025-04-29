@@ -103,7 +103,7 @@ const Booking = ({ tour, avgRating }) => {
               required
               onChange={handleChange}
               min={new Date().toISOString().split("T")[0]}
-              max="2025-04-29"
+              max="2025-05-10"
             />
 
             <input
